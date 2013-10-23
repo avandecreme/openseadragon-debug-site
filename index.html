@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OpenSeadragon debug</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <script src="openseadragon/openseadragon.js"></script>
+
+
+        <style>
+            .openseadragon {
+                width: 600px;
+                height:600px;
+                background-color: black;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>OpenSeadragon Recorder example</h1>
+
+        <div id="example" class="openseadragon" >
+        </div>
+        <div>
+	  <br><br>
+        </div>
+        <div id="example2" class="openseadragon" >
+        </div>
+
+
+        <script type="text/javascript">
+            var tileSources = [
+                "example-images/pnp/ppmsca/05900/05954/05954.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05955.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05956.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05957.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05958.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05959.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05960.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05961.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05962.dzi",
+                "example-images/pnp/ppmsca/05900/05954/05963.dzi"
+            ];
+
+            var osd = new OpenSeadragon.Viewer( {
+                id: "example",
+                prefixUrl: "openseadragon/images/",
+//                showNavigator: true,
+                wrapHorizontal: false,
+                wrapVertical: false,
+                zoomPerScroll: 1.2,
+                minZoomImageRatio: 0.5,
+                tileSources: tileSources[1]
+            } );
+
+            var osd2 = new OpenSeadragon.Viewer( {
+                id: "example2",
+                prefixUrl: "openseadragon/images/",
+//                showNavigator: true,
+                wrapHorizontal: false,
+                wrapVertical: false,
+                zoomPerScroll: 1.2,
+                minZoomImageRatio: 0.5,
+                tileSources: tileSources
+            } );
+        </script>
+    </body>
+</html>

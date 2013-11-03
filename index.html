@@ -4,9 +4,7 @@
         <title>OpenSeadragon debug</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <script src="openseadragon/openseadragon.js"></script>
-
-
+        <script src="openseadragon/src/openseadragon.js"></script>
         <style>
             .openseadragon {
                 width: 600px;
@@ -22,9 +20,15 @@
         <div id="example" class="openseadragon" >
         </div>
         <div>
+            <button onclick="osd.setFullPage(true);">FullPage</button>
+        </div>
+        <div>
 	  <br><br>
         </div>
         <div id="example2" class="openseadragon" >
+        </div>
+        <div>
+            <button onclick="osd2.setFullPage(true);">FullPage</button>
         </div>
 
 
@@ -63,6 +67,7 @@
                 minZoomImageRatio: 0.5,
                 tileSources: tileSources
             } );
+            
         </script>
     </body>
 </html>

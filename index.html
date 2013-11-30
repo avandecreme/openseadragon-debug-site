@@ -11,6 +11,10 @@
                 height:600px;
                 background-color: black;
             }
+            
+            canvas {
+                opacity: 0.5
+            }
 
         </style>
     </head>
@@ -19,18 +23,6 @@
 
         <div id="example" class="openseadragon" >
         </div>
-        <div>
-            <button onclick="osd.setFullPage(true);">FullPage</button>
-        </div>
-        <div>
-	  <br><br>
-        </div>
-        <div id="example2" class="openseadragon" >
-        </div>
-        <div>
-            <button onclick="osd2.setFullPage(true);">FullPage</button>
-        </div>
-
 
         <script type="text/javascript">
             var tileSources = [
@@ -49,23 +41,19 @@
             var osd = new OpenSeadragon.Viewer( {
                 id: "example",
                 prefixUrl: "openseadragon/images/",
-//                showNavigator: true,
+                showNavigator: true,
                 wrapHorizontal: false,
                 wrapVertical: false,
                 zoomPerScroll: 1.2,
                 minZoomImageRatio: 0.5,
                 tileSources: tileSources[1]
             } );
-
-            var osd2 = new OpenSeadragon.Viewer( {
-                id: "example2",
-                prefixUrl: "openseadragon/images/",
-//                showNavigator: true,
-                wrapHorizontal: false,
-                wrapVertical: false,
-                zoomPerScroll: 1.2,
-                minZoomImageRatio: 0.5,
-                tileSources: tileSources
+            osd.addHandler( "open", function() {
+                var ts = new OpenSeadragon.TileSource(
+                    tileSources[2] );
+                ts.addHandler( "ready", function(event) {
+                    osd.addLayer( event.tileSource );
+                } );
             } );
             
         </script>

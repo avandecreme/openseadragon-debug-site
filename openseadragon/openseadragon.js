@@ -1,6 +1,6 @@
 //! OpenSeadragon 1.0.0
 //! Built on 2014-03-17
-//! Git commit: v1.0.0-58-g13fa798-dirty
+//! Git commit: v1.0.0-60-ga0cb7ec-dirty
 //! http://openseadragon.github.io
 //! License: http://openseadragon.github.io/license/
 
@@ -2333,7 +2333,7 @@ window.OpenSeadragon = window.OpenSeadragon || function( options ){
     } else if ( document.msExitFullscreen ) {
         fullScreenApi.supportsFullScreen = true;
         fullScreenApi.isFullScreen = function() {
-            return document.msFullscreenElement !== undefined;
+            return document.msFullscreenElement !== null;
         };
         fullScreenApi.requestFullScreen = function( element ) {
             return element.msRequestFullscreen();
@@ -2370,8 +2370,8 @@ window.OpenSeadragon = window.OpenSeadragon || function( options ){
         fullScreenApi.fullScreenEventName = "mozfullscreenchange";
         fullScreenApi.fullScreenErrorEventName = "mozfullscreenerror";
     } else if ( typeof window.ActiveXObject !== "undefined" ) {
-        // Older IE. Note that supportsFullScreen stay to false because all methods
-        // and events are not supported. 
+        // Older IE. Note that supportsFullScreen stay to false because not all
+        // methods and events are supported.
         // Support based on:
         // http://stackoverflow.com/questions/1125084/how-to-make-in-javascript-full-screen-windows-stretching-all-over-the-screen/7525760
         fullScreenApi.requestFullScreen = function() {

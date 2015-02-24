@@ -4,7 +4,7 @@
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <script src="openseadragon/openseadragon.js"></script>
+        <script src="http://openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
         <style>
             #content {
                 width: 100%;
@@ -28,21 +28,13 @@
             Content<br>
             <input type="text"/><br>
 
-            <button onclick="toggleFullscreen();">Toggle Fullscreen</button>
+            <button onclick="logDataUrl();">Log data URL</button>
         </div>
 
         <div id="example" class="openseadragon" >
         </div>
 
         <script type="text/javascript">
-            function toggleFullscreen() {
-                var elt = document.getElementById( "content" );
-                if ( !OpenSeadragon.isFullScreen() ) {
-                    OpenSeadragon.requestFullScreen( elt );
-                } else {
-                    OpenSeadragon.exitFullScreen();
-                }
-            }
 
             var osd = new OpenSeadragon( {
                 id: "example",
@@ -50,9 +42,23 @@
                 showNavigator: true,
                 wrapHorizontal: false,
                 wrapVertical: false,
-                tileSources: "example-images/pnp/ppmsca/05900/05954/05963.dzi"
+                tileSources: {
+                    type: 'legacy-image-pyramid',
+                    levels:[{
+                        url: 'http://upload.wikimedia.org/wikipedia/commons/0/0a/Frost_patterns_2.jpg',
+                        height: 1666,
+                        width:  2499
+                    }]
+                },
+                crossOriginPolicy: 'Anonymous'
             } );
 
+            function logDataUrl() {
+                var canvas = document.getElementsByTagName("canvas")[0];
+                var url = canvas.toDataURL();
+                console.log(url);
+            }
+            
         </script>
     </body>
 </html>
